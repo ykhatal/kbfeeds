@@ -32,9 +32,18 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  }
+   '/' : {
+         controller: 'main',
+         action: 'index'
+    },
+    '/signup' : {
+         controller: 'user',
+         action: 'signup'
+    },
+    '/login' : {
+         controller: 'user',
+         action: 'login'
+    }
 
   /***************************************************************************
   *                                                                          *
