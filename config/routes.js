@@ -62,6 +62,27 @@ module.exports.routes = {
          controller: 'feed',
          action: 'getById'
     },
+    '/api/feeds/edit' : {
+         controller: 'feed',
+         action: 'edit'
+    },
+    // Categories resources
+    '/api/categories' : {
+         controller: 'category',
+         action: 'index'
+    },
+    '/api/categories/add' : {
+         controller: 'category',
+         action: 'add'
+    },
+    '/api/categories/delete/:id' : {
+         controller: 'category',
+         action: 'delete'
+    },
+    '/api/categories/edit' : {
+         controller: 'category',
+         action: 'edit'
+    },
 
 
   /***************************************************************************
