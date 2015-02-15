@@ -55,7 +55,7 @@ module.exports = {
 			}
         });
 	},
-	getById: function(req, res) {
+	getNewsByFeedId: function(req, res) {
 		var user = req.user;
 		Feed.findOne({ id: req.params.id, owner: user.id }, function(err, feed) {
 			if (err) {
