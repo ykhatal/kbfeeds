@@ -24,7 +24,8 @@ module.exports = {
 	    refreshToken: { type: 'string', defaultsTo: '' },
 	    accessToken: { type: 'string', defaultsTo: '' },
 	    expireIn: { type: 'date', defaultsTo: new Date(new Date().getTime() + EXPIRE_IN) },
-	    feeds: { collection: 'feed', via: 'owner' }
+	    feeds: { collection: 'feed', via: 'owner' },
+	    categories : { collection: 'category', via: 'owner' },
 	},
 
 	beforeCreate: function (attrs, next) {
