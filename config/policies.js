@@ -43,7 +43,7 @@ module.exports.policies = {
       add: ['isPost', 'OAuth'],
       delete: ['isDelete', 'OAuth'],
       edit: ['isPut', 'OAuth'],
-      getById: ['isGet', 'OAuth']
+      getNewsByFeedId: ['isGet', 'OAuth']
   },
   CategoryController: {
       index: ['isGet', 'OAuth'],

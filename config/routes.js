@@ -58,9 +58,9 @@ module.exports.routes = {
          controller: 'feed',
          action: 'delete'
     },
-    '/api/feeds/getById/:id/:pubDate' : {
+    '/api/feeds/getNewsByFeedId/:id/:pubDate' : {
          controller: 'feed',
-         action: 'getById'
+         action: 'getNewsByFeedId'
     },
     '/api/feeds/edit' : {
          controller: 'feed',
