@@ -21,8 +21,11 @@ module.exports = {
     checkSamePasswords: function(password, repeatPassword) {
         return (password === repeatPassword);
     },
-    checkGrantType: function(reqType, grantType) {
-        return (reqType === grantType);
+    checkGrantType: function(reqGrantType, grantType) {
+        return (reqGrantType === grantType);
+    },
+    checkTokenType: function(reqTokenType, tokenType) {
+        return (reqTokenType === tokenType);
     },
     generateToken: function() {
         var crypto = require('crypto');
@@ -32,6 +35,12 @@ module.exports = {
             key += possible.charAt(Math.floor(Math.random() * possible.length));
         }
         return crypto.createHash('sha256').update(key).digest('hex');
+    },
+    addHttpToUrl: function(url) {
+        if (url.toString().substring(0, 7) != "http://") {
+            url = "http://" + url;
+        }
+        return url;
     }
 };
 
