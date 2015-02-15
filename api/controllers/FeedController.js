@@ -123,6 +123,47 @@ module.exports = {
 				});
 			}
         });
+	},
+	updateCategory: function(req, res) {
+		var user = req.user;
+		Category.findOne({ id: req.body.category_id, owner: user.id }).populate('feeds').exec(function(err, category) {
+			if (err) {
+			    return res.status(500).json({ error: 'DB error' });
+			}
+			if (!category) {
+			    return res.status(404).json({ error: 'Category don\'t exist' });
+			} else {
+				Feed.findOne({ id: req.body.feed_id, owner: user.id }, function(err, feed) {
+					if (err) {
+					    return res.status(500).json({ error: 'DB error' });
+					}
+					if (!feed) {
+					    return res.status(404).json({ error: 'Feed don\'t exist' });
+					} else {
+						category.feeds.add(feed);
+					    category.save(function(err) {
+							if (err) {
+								return res.status(500).json({ error: 'DB error' });
+							}
+							return res.status(200).json({ success: "Feed category updated successfuly" });
+						});
+					}
+        		});
+			}
+        });
+	},
+	getByCategoryId: function(req, res) {
+		var user = req.user;
+		Category.findOne({ id: req.params.id, owner: user.id }).populate('feeds').exec(function(err, category) {
+			if (err) {
+			    return res.status(500).json({ error: 'DB error' });
+			}
+			if (!category) {
+			    return res.status(404).json({ error: 'Category don\'t exist' });
+			} else {
+				return res.status(200).json({ success: category });
+			}
+        });
 	}
 };
 
