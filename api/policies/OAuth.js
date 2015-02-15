@@ -13,7 +13,7 @@ module.exports = function(req, res, next) {
     }
     authorization = authorization.toString().split(' ');
 	if (utils.checkTokenType(authorization[0], 'Bearer')) {
-		User.findOneByAccessToken(authorization[1]).populate('feeds').exec(function (err, user) {
+		User.findOneByAccessToken(authorization[1]).populate('feeds').populate('categories').exec(function (err, user) {
 			if (err) {
 				return res.status(500).json({ error: 'DB error' });
 			}
