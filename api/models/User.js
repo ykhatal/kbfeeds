@@ -19,11 +19,12 @@ module.exports = {
 	attributes: {
   		username: { type: 'email', required: true, unique: true },
   		password: { type: 'string', required: true, minLength: 6 },
-  		connection_ip: { type: 'string', defaultsTo: '' },
-  		token_type: { type: 'string', defaultsTo: 'Bearer' },
-	    refresh_token: { type: 'string', defaultsTo: '' },
-	    access_token: { type: 'string', defaultsTo: '' },
-	    expire_in: { type: 'date', defaultsTo: new Date(new Date().getTime() + EXPIRE_IN) }
+  		connectionIp: { type: 'string', defaultsTo: '' },
+  		tokenType: { type: 'string', defaultsTo: 'Bearer' },
+	    refreshToken: { type: 'string', defaultsTo: '' },
+	    accessToken: { type: 'string', defaultsTo: '' },
+	    expireIn: { type: 'date', defaultsTo: new Date(new Date().getTime() + EXPIRE_IN) },
+	    feeds: { collection: 'feed', via: 'owner' }
 	},
 
 	beforeCreate: function (attrs, next) {
@@ -44,10 +45,10 @@ module.exports = {
 
   	createTokenObject: function(tokenType) {
   		var token = {
-  			token_type: tokenType,
-  			refresh_token: utils.generateToken(),
-  			access_token: utils.generateToken(),
-  			expire_in: new Date(new Date().getTime() + EXPIRE_IN),
+  			tokenType: tokenType,
+  			refreshToken: utils.generateToken(),
+  			accessToken: utils.generateToken(),
+  			expireIn: new Date(new Date().getTime() + EXPIRE_IN),
   		}
   		return token;
   	}
