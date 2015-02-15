@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-	index: function(req, res, user) {
+	index: function(req, res) {
 		var user = req.user;
 		return res.status(200).json({ success: user.feeds });
 	},
@@ -28,7 +28,7 @@ module.exports = {
 			            if (err) {
 			               	return res.status(500).json({ error: 'DB error' });
 			            }
-			            return res.status(200).json({ success: "feed added successfuly" });
+			            return res.status(200).json({ success: "Feed added successfuly" });
 			        });
 			   	});
 			}
@@ -49,7 +49,7 @@ module.exports = {
 					    if (err) {
 					        return res.status(500).json({ error: 'DB error' });
 					    }
-					    return res.status(200).json({ success: "feed deleted successfuly" });
+					    return res.status(200).json({ success: "Feed deleted successfuly" });
 				    });
 			    });
 			}
@@ -101,6 +101,26 @@ module.exports = {
 				       	} });
 				    });
 			    });
+			}
+        });
+	},
+	edit: function(req, res) {
+		var user = req.user;
+		Feed.findOne({ id: req.body.feed_id, owner: user.id }, function(err, feed) {
+			if (err) {
+			    return res.status(500).json({ error: 'DB error' });
+			}
+			if (!feed) {
+			    return res.status(404).json({ error: 'Feed don\'t exist' });
+			} else {
+				feed.name = req.body.new_name;
+				feed.url = req.body.new_url;
+			    feed.save(function(err) {
+					if (err) {
+					    return res.status(500).json({ error: 'DB error' });
+					}
+					return res.status(200).json({ success: "Feed updated successfuly" });
+				});
 			}
         });
 	}
