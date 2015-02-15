@@ -42,6 +42,13 @@ module.exports.policies = {
       index: ['isGet', 'OAuth'],
       add: ['isPost', 'OAuth'],
       delete: ['isDelete', 'OAuth'],
+      edit: ['isPut', 'OAuth'],
       getById: ['isGet', 'OAuth']
+  },
+  CategoryController: {
+      index: ['isGet', 'OAuth'],
+      add: ['isPost', 'OAuth'],
+      delete: ['isDelete', 'OAuth'],
+      edit: ['isPut', 'OAuth'],
   }
 };
