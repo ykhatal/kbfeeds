@@ -18,6 +18,9 @@ module.exports = function(req, res, next) {
 				return res.status(500).json({ error: 'DB error' });
 			}
 			if (user) {
+				if (!utils.checkTokenValidity(user.expireIn)) {
+					return res.status(403).json({ error: 'Access token has expired, use refresh token to update it' });
+				}
 				req.user = user;
 				return next();
 			} else {
