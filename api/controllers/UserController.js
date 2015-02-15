@@ -32,14 +32,13 @@ module.exports = {
         			return res.status(403).json({ error: 'Passwords don\'t match' });
         		}
     		} else {
-    			return res.status(403).json({ error: 'password is in an invalid format, must contain at least one'
-           		+ 'digit/lowercase/uppercase letter and be at least six characters long' });
+    			return res.status(403).json({ error: 'password is in an invalid format, must contain'
+           		+ ' at least one digit/lowercase/uppercase letter and be at least six characters long' });
     		}
 		} else {
 			return res.status(403).json({ error: 'Username invalid, must be like : email@example.com' });
 		}
     },
-
     login: function (req, res) {
         var bcrypt = require('bcrypt');
         if (utils.checkGrantType(req.body.grant_type, 'password')) {
@@ -55,15 +54,16 @@ module.exports = {
 			          	if (match) {
 			            	// password match
 			            	var token = User.createTokenObject('Bearer');
-			            	user.token_type = token.token_type;
-			            	user.access_token = token.access_token;
-			            	user.refresh_token = token.refresh_token;
-			            	user.expire_in = token.expire_in;
+			            	user.tokenType = token.tokenType;
+			            	user.accessToken = token.accessToken;
+			            	user.refreshToken = token.refreshToken;
+			            	user.expireIn = token.expireIn;
 			            	user.save(function(error) {
 						        if(error) {
 						            return res.status(500).json({ error: 'DB error' });
 						        } else {
 						            return res.status(200).json({ success: {
+						            	userId: user.id,
 					            		username: user.username,
 					            		token: token,
 			            			} });
