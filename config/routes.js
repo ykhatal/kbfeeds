@@ -36,14 +36,33 @@ module.exports.routes = {
          controller: 'main',
          action: 'index'
     },
-    '/signup' : {
+    // Users resources
+    '/api/users/signup' : {
          controller: 'user',
          action: 'signup'
     },
-    '/login' : {
+    '/api/users/login' : {
          controller: 'user',
          action: 'login'
-    }
+    },
+    // Feeds resources
+    '/api/feeds' : {
+         controller: 'feed',
+         action: 'index'
+    },
+    '/api/feeds/add' : {
+         controller: 'feed',
+         action: 'add'
+    },
+    '/api/feeds/delete/:id' : {
+         controller: 'feed',
+         action: 'delete'
+    },
+    '/api/feeds/getById/:id/:pubDate' : {
+         controller: 'feed',
+         action: 'getById'
+    },
+
 
   /***************************************************************************
   *                                                                          *
