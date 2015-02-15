@@ -16,7 +16,8 @@ module.exports = {
 	attributes: {
 	    name: { type: 'string' },
 	    url: { type: 'string' },
-	  	owner: { model: 'user' }
+	  	owner: { model: 'user' },
+	  	category: { model: 'category' }
 	}
 };
 
