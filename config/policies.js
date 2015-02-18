@@ -52,5 +52,11 @@ module.exports.policies = {
       add: ['isPost', 'OAuth'],
       delete: ['isDelete', 'OAuth'],
       edit: ['isPut', 'OAuth']
+  },
+  ArticleController: {
+      index: ['isGet', 'OAuth'],
+      add: ['isPost', 'OAuth'],
+      delete: ['isDelete', 'OAuth'],
+      edit: ['isPut', 'OAuth']
   }
 };
