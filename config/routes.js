@@ -91,6 +91,23 @@ module.exports.routes = {
          controller: 'category',
          action: 'edit'
     },
+    // Articles resources
+    '/api/articles' : {
+         controller: 'article',
+         action: 'index'
+    },
+    '/api/articles/add' : {
+         controller: 'article',
+         action: 'add'
+    },
+    '/api/articles/delete/:id' : {
+         controller: 'article',
+         action: 'delete'
+    },
+    '/api/articles/edit' : {
+         controller: 'article',
+         action: 'edit'
+    },
 
 
   /***************************************************************************
