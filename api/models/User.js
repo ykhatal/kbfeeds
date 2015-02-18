@@ -25,7 +25,8 @@ module.exports = {
 	    accessToken: { type: 'string', defaultsTo: '' },
 	    expireIn: { type: 'date', defaultsTo: new Date(new Date().getTime() + EXPIRE_IN) },
 	    feeds: { collection: 'feed', via: 'owner' },
-	    categories : { collection: 'category', via: 'owner' },
+	    categories: { collection: 'category', via: 'owner' },
+      articles: { collection: 'article', via: 'owner' }
 	},
 
 	beforeCreate: function (attrs, next) {
