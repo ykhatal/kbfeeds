@@ -12,7 +12,7 @@ module.exports = {
 	// Must follow table Schema
 	schema: true,
 
-	// Category table schema
+	// Article table schema
 	attributes: {
   		name: { type: 'string' },
   		link: {type: 'string' },
